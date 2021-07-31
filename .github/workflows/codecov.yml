@@ -1,0 +1,45 @@
+on: [pull_request, push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      COVERAGE_DATA_PATH: coverage-data/coverage.info
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: build
+        shell: bash
+        run: |
+          cmake -S "." -B "build"
+          cmake --build build
+
+      - name: Install LCOV
+        shell: bash
+        run: |
+          sudo apt-get --assume-yes install lcov > /dev/null
+
+      - name: run test
+        shell: bash
+        run: ./build/tests/test_hellocov
+
+      - name: lcov collection
+        shell: bash
+        run: |
+          cd build
+          lcov -c -d ./ -o cover.info
+
+#      - uses: arduino/cpp-test-action@v1
+#        with:
+#          coverage-data-path: ${{ env.COVERAGE_DATA_PATH }}
+#          source-path: ./
+#          build-path: build
+#          runtime-paths: build/tests/test_hellocov
+
+      # Optional: upload coverage report to codecov.io
+      - uses: codecov/codecov-action@v1
+        with:
+          file: build/cover.info
