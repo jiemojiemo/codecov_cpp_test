@@ -12,9 +12,6 @@ jobs:
       - uses: arduino/cpp-test-action@v1
         with:
           coverage-data-path: ${{ env.COVERAGE_DATA_PATH }}
-          source-path: ./
-          build-path: build
-          runtime-paths: build/tests/test_hellocov
 
       # Optional: upload coverage report to codecov.io
       - uses: codecov/codecov-action@v1
