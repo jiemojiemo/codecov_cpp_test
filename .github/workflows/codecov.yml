@@ -14,7 +14,6 @@ jobs:
       - name: build
         shell: bash
         run: |
-          echo "::group::Run CMake on ${{ inputs.source-path }}"
           cmake -S "." -B "build"
           cmake --build build
 
