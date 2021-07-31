@@ -15,7 +15,7 @@ jobs:
           coverage-data-path: ${{ env.COVERAGE_DATA_PATH }}
           source-path: ${{ env.BUILD_PATH }}
 
-#      # Optional: upload coverage report to codecov.io
-#      - uses: codecov/codecov-action@v1
-#        with:
-#          file: ${{ env.COVERAGE_DATA_PATH }}
+      # Optional: upload coverage report to codecov.io
+      - uses: codecov/codecov-action@v1
+        with:
+          file: ${{ env.COVERAGE_DATA_PATH }}
