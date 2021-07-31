@@ -17,8 +17,6 @@ jobs:
           source-path: ./
           build-path: build
           runtime-paths: build/tests/test_hellocov
-          coverage-exclude-paths:
-            -
 
       # Optional: upload coverage report to codecov.io
       - uses: codecov/codecov-action@v1
