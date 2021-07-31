@@ -1,0 +1,21 @@
+on: [pull_request, push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      COVERAGE_DATA_PATH: extras/coverage-data/coverage.info
+      BUILD_PATH: ./
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: arduino/cpp-test-action@v1
+        with:
+          coverage-data-path: ${{ env.COVERAGE_DATA_PATH }}
+          source-path: ${{ env.BUILD_PATH }}
+
+#      # Optional: upload coverage report to codecov.io
+#      - uses: codecov/codecov-action@v1
+#        with:
+#          file: ${{ env.COVERAGE_DATA_PATH }}
