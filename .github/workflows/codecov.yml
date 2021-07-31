@@ -12,15 +12,15 @@ jobs:
           submodules: true
 
       - name: build
-          shell: bash
-          run: |
+        shell: bash
+        run: |
             echo "::group::Run CMake on ${{ inputs.source-path }}"
             cmake -S "." -B "build"
             cmake --build build
 
       - name: Install LCOV
-          shell: bash
-          run: |
+        shell: bash
+        run: |
             sudo apt-get --assume-yes install lcov > /dev/null
 
 #      - uses: arduino/cpp-test-action@v1
