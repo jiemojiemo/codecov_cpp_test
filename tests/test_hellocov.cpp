@@ -7,8 +7,10 @@
 #include <cassert>
 int main()
 {
-        assert(is_power_of_two(8));
-        assert(14 == multiply_by_two(7));
-        assert(-4 == divide_by_two(-7));
-        assert(is_power_of_two(-8) == false);
+       is_power_of_two(8);
+       multiply_by_two(7);
+       divide_by_two(-7);
+       is_power_of_two(-8);
+
+       return 0;
 }
