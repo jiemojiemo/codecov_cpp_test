@@ -14,8 +14,14 @@ jobs:
       - name: build
         shell: bash
         run: |
-          cmake -S "." -B "build"
+          cmake -S . -B build
           cmake --build build
+
+      - name: test
+        shell: bash
+        run: |
+          cd build
+          ctest --verbose
 
       - name: Install LCOV
         shell: bash
